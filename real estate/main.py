@@ -1,25 +1,25 @@
-from .conf import ApartmentPurchase, ApartmentRental, HousePurchase, HouseRental
-from .utils import get_valid_input
+from base import Agent
 
 
-class Agent:
-    type_map = {
-        ("house", "rental"): HouseRental,
-        ("house", "purchase"): HousePurchase,
-        ("apartment", "rental"): ApartmentRental,
-        ("apartment", "purchase"): ApartmentPurchase,
-    }
+def main(agent):
+    while 1:
+        print(
+            "- for displaying all the properties enter (1)\n"
+            "- for add new property enter (2)\n"
+            "- for closing the program enter (3)"
+        )
+        choice = input("enter a number: ")
+        if choice == "1":
+            agent.display_properties()
+        elif choice == "2":
+            agent.add_property()
+        elif choice == "3":
+            break
+        else:
+            print("Please enter correct nomber")
 
-    def __init__(self):
-        self.property_list = []
 
-    def display_properties(self):
-        for property in self.property_list:
-            property.display()
+if __name__ == "__main__":
+    agent = Agent()
 
-    def add_property(self):
-        property_type = get_valid_input("What type of property? ", ("house", "apartment")).lower()
-        payment_type = get_valid_input("What payment type? ", ("purchase", "rental")).lower()
-        PropertyClass = self.type_map[(property_type, payment_type)]
-        init_args = PropertyClass.prompt_init()
-        self.property_list.append(PropertyClass(**init_args))
+    main(agent)

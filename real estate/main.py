@@ -22,4 +22,4 @@ def main(agent: Agent) -> None:
 if __name__ == "__main__":
     agent = Agent()
 
-    main("agent")
+    main(agent)

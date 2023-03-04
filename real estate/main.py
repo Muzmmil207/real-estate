@@ -1,7 +1,7 @@
 from base import Agent
 
 
-def main(agent):
+def main(agent: Agent) -> None:
     while 1:
         print(
             "- for displaying all the properties enter (1)\n"
@@ -22,4 +22,4 @@ def main(agent):
 if __name__ == "__main__":
     agent = Agent()
 
-    main(agent)
+    main("agent")
